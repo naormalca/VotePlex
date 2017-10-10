@@ -1,0 +1,71 @@
+body {
+/*background: #44A08D;  /* fallback for old browsers */
+/*background: linear-gradient(to right, #093637, #44A08D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/*background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+background: #CAEBF2;
+font-family: 'Bree Serif', serif;
+}
+.jumbotron{
+    text-align:center;
+    margin:0 15%;
+    background-color: #EFEFEF;
+    border:20px solid #FF3B3F;
+}
+.navbar{
+    background-color:#EFEFEF; 
+}
+/*main*/
+h1{
+   
+    text-align:center;
+}
+.btn{
+    background-color:#FF3B3F;
+    border-color:#EFEFEF;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+    color: #FF3B3F;
+    background-color: white;
+    border-color:#ff3B3F;
+    
+}
+/*enter*/
+#signForm{
+    text-align: center;
+    margin:0 auto;
+}
+#signForm input{
+    text-align: center;
+    margin:auto;
+    width:40%;
+}
+#createForm{
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+#createForm input{
+    text-align: center;
+}
+#createForm #option{
+    width:25%;
+}
+
+.pollContent{
+    background-color: #CAEBF2;
+    margin:20px 100px 20px 100px;
+    padding:8px 8px;
+    /*border: 1px solid black;*/
+    box-shadow: 10px 10px 5px #888888;
+    border-left: 10px solid #FF3B3F;
+    
+}
+/*show*/
+
+th{
+    text-align:center;
+}
+table{
+    margin:auto 20px;
+}

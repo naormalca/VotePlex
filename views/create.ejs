@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+<div class="jumbotron">
+    <h1 class="display-3">New Poll</h1>
+    <form action="/" method="POST" id="createForm">
+        <div class="form-group" style="width:60%">
+            <label for="title">Name your poll.</label>
+            <input type="text" class="form-control" name="title" placeholder="Poll Question">
+        </div>
+        <div class="form-group" id="option">
+            <label for="Option 1">Options</label>
+            <input type="text" class="form-control" name="options[0][name]" placeholder="Option 1" value="value1">
+            <input type="text" class="form-control" name="options[1][name]" placeholder="Option 2" value="value2">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-lg" value="Publish">
+        </div>
+    </form>
+    <button class="add_option btn btn-primary">Add More Options</button>
+</div>
+<% include ./partials/footer %>
+<script type="text/javascript" src="scripts/create.js"></script>
+</body>
+</html>

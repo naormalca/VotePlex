@@ -1,0 +1,22 @@
+<% include ./partials/header %>
+<!---->
+<div class="jumbotron">
+  <h1 class="display-3">Vote Plex</h1>
+  <p class="lead">Make your own poll.</p>
+  <hr class="my-4">
+  <p>Select a poll to see the results and vote, or sign-in to make a new poll.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="/create" role="button">Make poll</a>
+  </p>
+  <% polls.forEach(function(polls){ %>
+    <div class="pollContent">
+      <p>
+        <strong><%=polls.title%></strong>
+        <p>By <%=polls.maker.fullname%></p>
+        <a href="/Poll/<%=polls._id %>">ENTER</a>
+      </p>
+     
+    </div>
+  <% }); %>
+</div>
+<% include ./partials/footer %>

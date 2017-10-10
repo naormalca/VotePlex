@@ -1,0 +1,92 @@
+<% include ./partials/header %>
+<div class="jumbotron">
+    <h1><%=poll.title %></h1>
+    <h3>Created By <%=poll.maker.fullname%></h3>
+    <div class="row">
+        <div class="col-xs-4 col-md-4 col-lg-4" id="poll_options">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Options</th>
+                        <th>Number Of Vote</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% poll.options.forEach(function(options){ %>
+                    <tr>
+                        <td><%= options.name %></td>
+                        <td><%= options.vote %>
+                        <form action="/Poll/<%=poll._id%>/<%=options._id %>" method="POST">
+                            <button type="sumbit" id="vote_icon" value="<%=options.name%>" class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                        </form>
+                        </td>
+                    </tr>
+                    </tbody>
+                <% }); %>
+            </table>
+        </div>
+        <div class="col-xs-8 col-md-8 col-lg-8">
+          <canvas id="myChart" style="width: 500px; height: 300px"></canvas>
+            <script>
+            window.onload = function() {
+              var ctx = document.getElementById("myChart").getContext('2d');
+              var colorArray = ["Red", "Blue", "Yellow", "Green", "Purple"];
+              colorArray.length = <%=poll.options.length %>;
+              var myChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels:[<% for(var i=0;i<poll.options.length;i++){ %>
+                                "<%= poll.options[i].name %>",<% } %>],
+                    datasets: [{
+                        label: '# of Votes',
+                        data:
+                        [<% for(var i=0;i<poll.options.length;i++){%>
+                          <%= poll.options[i].vote%>,<% } %>],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 206, 86)',
+                            'rgb(0,255,255)',
+                            'rgb(153, 102, 255)'
+                            
+                        ],
+                        borderColor: [
+                            'rgba(255,99,132,1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(0, 255, 255, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ]
+                        
+                    }]
+                },
+                options: {
+                    scales: {
+                        xAxes:[],
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero:true
+                            }
+                        }]
+                    }
+                }
+            });
+            }
+</script>
+        </div>
+    </div>
+    <hr>
+    <% if(currentUser && poll.maker.id == currentUser.id){ %>
+    
+    <form action="/Poll/<%=poll.id%>/delete?_method=DELETE" method="POST">
+        <button id="delete">Delete This Poll</button>
+    </form>
+    <% }%>
+</div>
+
+<% include ./partials/footer %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+<script type="text/javascript" src="../scripts/show.js"></script>
+</body>
+</html>

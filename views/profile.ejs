@@ -1,0 +1,21 @@
+<% include ./partials/header %>
+    <div class="jumbotron">
+            <%if(user.local.email){ %>
+            <p>
+                <p><strong>Id</strong>: <%=user._id %></p>
+                <p><strong>email</strong>: <%=user.local.email %></p>
+                <p><strong>password</strong>: <%=user.local.password %></p>
+                <p><strong>Full Name</strong>: <%=user.local.fullname %></p>
+            </p>
+            <% } %>
+            <% if(user.facebook.token){%>
+            <p></p>
+            <h1>facebook</h1>
+                <strong>id</strong>: <%= user.facebook.id %><br>
+                <!--<strong>token</strong>: <%= user.facebook.token %><br>-->
+                <strong>email</strong>: <%= user.facebook.email || "Not provided" %><br>
+                <strong>name</strong>: <%= user.facebook.name %><br>
+            </p>
+            <% }%>
+    </div>
+<% include ./partials/footer %>
